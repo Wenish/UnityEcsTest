@@ -17,6 +17,7 @@ namespace UnityEcsTest.Assets.Scripts
             var entityManager = World.Active.GetOrCreateManager<EntityManager>();
 
             var playerArchtype = entityManager.CreateArchetype(
+                typeof(PlayerTag),
                 typeof(MoveSpeed),
                 typeof(Transform),
                 typeof(Position),

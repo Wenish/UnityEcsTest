@@ -7,5 +7,6 @@ namespace UnityEcsTest.Assets.Scripts.Components
         public float Value;
     }
 
-    public class MoveSpeedComponent : ComponentDataWrapper<MoveSpeed>{}
+    //If Component needs to be used on Prefabs
+    //public class MoveSpeedComponent : ComponentDataWrapper<MoveSpeed>{}
 }

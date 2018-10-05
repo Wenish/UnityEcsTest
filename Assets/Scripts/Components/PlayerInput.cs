@@ -7,5 +7,6 @@ namespace UnityEcsTest.Assets.Scripts.Components
         public float Horizontal;
     }
 
-    public class PlayerInputComponent : ComponentDataWrapper<PlayerInput>{}
+    //If Component needs to be used on Prefabs
+    //public class PlayerInputComponent : ComponentDataWrapper<PlayerInput>{}
 }

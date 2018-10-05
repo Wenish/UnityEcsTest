@@ -1,5 +1,5 @@
 {
-  "name": "blubSenseServer",
+  "name": "unityecstestserver",
   "version": "0.0.1",
   "description": "game server",
   "main": "dist/server/bundle.js",

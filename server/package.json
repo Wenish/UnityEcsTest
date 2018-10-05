@@ -19,14 +19,14 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "colyseus": "^0.9.2",
+    "colyseus": "^0.9.17",
     "express": "^4.14.0",
-    "nodemon": "^1.11.0",
-    "shortid": "^2.2.8"
+    "nodemon": "^1.18.4",
+    "shortid": "^2.2.13"
   },
   "devDependencies": {
+    "fuse-box": "^2.4.0",
     "ts-node": "^3.3.0",
-    "typescript": "^2.4.2",
-    "fuse-box": "^2.4.0"
+    "typescript": "^2.9.2"
   }
 }

@@ -1,0 +1,32 @@
+{
+  "name": "blubSenseServer",
+  "version": "0.0.1",
+  "description": "game server",
+  "main": "dist/server/bundle.js",
+  "scripts": {
+    "start": "npm run bundle && node dist/server/bundle.js",
+    "dev": "nodemon",
+    "startBundle": "node dist/server/bundle.js",
+    "bundle": "node fuse.js"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [
+    "game",
+    "server"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "colyseus": "^0.9.2",
+    "express": "^4.14.0",
+    "nodemon": "^1.11.0",
+    "shortid": "^2.2.8"
+  },
+  "devDependencies": {
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2",
+    "fuse-box": "^2.4.0"
+  }
+}

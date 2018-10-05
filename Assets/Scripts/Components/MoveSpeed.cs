@@ -6,4 +6,6 @@ namespace UnityEcsTest.Assets.Scripts.Components
     {
         public float Value;
     }
+
+    public class MoveSpeedComponent : ComponentDataWrapper<MoveSpeed>{}
 }

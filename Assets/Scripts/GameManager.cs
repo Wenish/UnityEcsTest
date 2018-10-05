@@ -24,7 +24,7 @@ namespace UnityEcsTest.Assets.Scripts
             );
 
             var playerEntity = entityManager.CreateEntity(playerArchtype);
-            entityManager.SetComponentData(playerEntity, new MoveSpeed{Value = 6});
+            entityManager.SetComponentData(playerEntity, new MoveSpeed { Value = 6 });
             entityManager.SetSharedComponentData(playerEntity, playerLook);
         }
     }

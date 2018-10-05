@@ -6,4 +6,6 @@ namespace UnityEcsTest.Assets.Scripts.Components
     {
         public float Horizontal;
     }
+
+    public class PlayerInputComponent : ComponentDataWrapper<PlayerInput>{}
 }

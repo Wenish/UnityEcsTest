@@ -2,12 +2,14 @@ using Unity.Entities;
 using Unity.Rendering;
 using Unity.Transforms;
 using UnityEcsTest.Assets.Scripts.Components;
+using UnityEcsTest.Assets.Scripts.Network;
 using UnityEngine;
 
 namespace UnityEcsTest.Assets.Scripts
 {
     public class GameManager
     {
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         public static void Start()
         {

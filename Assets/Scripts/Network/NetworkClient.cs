@@ -28,10 +28,12 @@ namespace UnityEcsTest.Assets.Scripts.Network
             client = new Client(uri);
             client.OnClose += (object sender, EventArgs e) => Debug.Log("CONNECTION CLOSED");
 
-            /*
             await client.Connect();
             room = client.Join(roomName);
-            room.OnReadyToConnect += (sender, e) => room.Connect();
+            room.OnReadyToConnect += async (sender, e) =>
+            {
+                await room.Connect();
+            };
             room.OnJoin += (sender, e) => Debug.Log("Room Joined");
             room.OnError += (sender, e) =>
             {
@@ -39,14 +41,21 @@ namespace UnityEcsTest.Assets.Scripts.Network
                 Debug.Log(e);
             };
 
+            Application.quitting += OnApplicationQuit;
+
             //room.OnMessage += OnData;
             while (true)
             {
                 client.Recv();
+                await Task.Delay(TimeSpan.FromSeconds(1));
+            }
+        }
 
-                yield return 0;
-            } 
-            */
+        private static void OnApplicationQuit()
+        {
+            Debug.Log("Network OnAppQuit");
+            room.Leave();
+            client.Close();
         }
     }
 }

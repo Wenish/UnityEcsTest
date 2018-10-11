@@ -7,46 +7,26 @@ using Newtonsoft.Json;
 
 namespace UnityEcsTest.Assets.Scripts.Network
 {
-    public class ColyseusClient : MonoBehaviour
+    public class ColyseusClient
     {
-        public Client client;
-        public Room room;
+        public Client Client;
+        private string _serverName;
+        private string _port;
+        private string _serverUri;
 
-        public string serverName = "localhost";
-        public string port = "8080";
-        public string roomName = "match";
-
-        IEnumerator Start()
+        public ColyseusClient(string serverName, string port)
         {
-            Debug.Log("Starting ColyseusClient");
-            Debug.Log($"Connecting to ws://{serverName}:{port}");
-            String uri = "ws://" + serverName + ":" + port;
-            client = new Client(uri);
-            client.OnClose += (object sender, EventArgs e) => Debug.Log("CONNECTION CLOSED");
-
-            yield return StartCoroutine(client.Connect());
-            room = client.Join(roomName);
-            room.OnReadyToConnect += (sender, e) => StartCoroutine(room.Connect());
-            room.OnJoin += (sender, e) => Debug.Log("Room Joined");
-            room.OnError += (sender, e) =>
-            {
-                Debug.Log("oops, error ocurred:");
-                Debug.Log(e);
-            };
-
-            //room.OnMessage += OnData;
-            while (true)
-            {
-                client.Recv();
-
-                yield return 0;
-            }
+            Debug.Log("ColyseusClient created");
+            _serverName = serverName;
+            _port = port;
+            _serverUri = "ws://" + this._serverName + ":" + this._port;
         }
-        void OnApplicationQuit()
+
+        public void ConnectToServer()
         {
-            Debug.Log("quitting");
-            room.Leave();
-            client.Close();
+            Debug.Log($"Connecting to {_serverUri}");
+
+
         }
     }
 }

@@ -1,8 +1,5 @@
-using Unity.Entities;
-using Unity.Rendering;
-using Unity.Transforms;
-using UnityEcsTest.Assets.Scripts.Components;
 using UnityEcsTest.Assets.Scripts.Network;
+using UnityEcsTest.Assets.Scripts.Network.Listeners.Players;
 using UnityEngine;
 
 namespace UnityEcsTest.Assets.Scripts
@@ -17,23 +14,7 @@ namespace UnityEcsTest.Assets.Scripts
             _colyseusClient = new ColyseusClient("localhost", "8080");
             await _colyseusClient.ConnectToServer();
             var room = _colyseusClient.JoinRoom("match");
-
-            var playerPrototype = GameObject.Find("PlayerPrototype");
-            var playerLook = playerPrototype.GetComponent<MeshInstanceRendererComponent>().Value;
-            Object.Destroy(playerPrototype);
-            var entityManager = World.Active.GetOrCreateManager<EntityManager>();
-
-            var playerArchtype = entityManager.CreateArchetype(
-                typeof(PlayerTag),
-                typeof(MoveSpeed),
-                typeof(Transform),
-                typeof(Position),
-                typeof(MeshInstanceRenderer)
-            );
-
-            var playerEntity = entityManager.CreateEntity(playerArchtype);
-            entityManager.SetComponentData(playerEntity, new MoveSpeed { Value = 6 });
-            entityManager.SetSharedComponentData(playerEntity, playerLook);
+            room.Listen("players/:id", new ListenerPlayers().OnChange);
         }
     }
 }

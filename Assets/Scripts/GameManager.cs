@@ -9,10 +9,15 @@ namespace UnityEcsTest.Assets.Scripts
 {
     public class GameManager
     {
+        private static ColyseusClient _colyseusClient;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-        public static void Start()
+        public static async void Start()
         {
+            _colyseusClient = new ColyseusClient("localhost", "8080");
+            await _colyseusClient.ConnectToServer();
+            var room = _colyseusClient.JoinRoom("match");
+
             var playerPrototype = GameObject.Find("PlayerPrototype");
             var playerLook = playerPrototype.GetComponent<MeshInstanceRendererComponent>().Value;
             Object.Destroy(playerPrototype);

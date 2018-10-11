@@ -22,6 +22,7 @@ namespace UnityEcsTest.Assets.Scripts.Network.Listeners.Players
             _entityManager = World.Active.GetOrCreateManager<EntityManager>();
 
             _archtypePlayer = _entityManager.CreateArchetype(
+                typeof(NetworkEntity),
                 typeof(PlayerTag),
                 typeof(MoveSpeed),
                 typeof(Transform),
@@ -50,6 +51,7 @@ namespace UnityEcsTest.Assets.Scripts.Network.Listeners.Players
             float positionY = float.Parse(jsonObj["value"]["position"]["y"].ToString());
             float positionZ = float.Parse(jsonObj["value"]["position"]["z"].ToString());
             var playerEntity = _entityManager.CreateEntity(_archtypePlayer);
+            //_entityManager.SetComponentData(playerEntity, new NetworkEntity { Id = playerId });
             _entityManager.SetComponentData(playerEntity, new Position { Value = { x = positionX, y = positionY, z = positionZ} });
             _entityManager.SetComponentData(playerEntity, new MoveSpeed { Value = moveSpeed });
             _entityManager.SetSharedComponentData(playerEntity, _playerLook);

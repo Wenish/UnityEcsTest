@@ -1,8 +1,10 @@
+﻿using System;
 using Unity.Entities;
 
 namespace UnityEcsTest.Assets.Scripts.Components
 {
-    public struct PlayerTag : IComponentData
+    [Serializable]
+    public struct NetworkEntity : IComponentData
     {
     }
 }

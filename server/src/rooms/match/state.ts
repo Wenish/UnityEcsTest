@@ -8,11 +8,11 @@ export class State {
     constructor () {
         //Do here some init stuff;
         var player1 = Player.generate();
-        this.players["53g34g4"] = Player.generate();
+        this.players[player1.id] = player1;
         var player2 = Player.generate();
-        this.players["thg433g"] = Player.generate();
+        this.players[player2.id] = player2;
         var player3 = Player.generate();
-        this.players["34gergr"] = Player.generate();
+        this.players[player3.id] = player3;
         console.log(this.players);
     };
 

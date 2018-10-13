@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -256,7 +256,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 22.093, y: 0, z: 0}
---- !u!1001 &1194411656
+--- !u!1001 &787509657
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -295,16 +295,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114093326654629570, guid: daa6f5a99ca46b44cb3fcc70c38f2547,
-        type: 2}
-      propertyPath: m_SerializedData.material
-      value: 
-      objectReference: {fileID: 2100000, guid: ca7fbe96cabf5de4d98cee8636d61166, type: 2}
-    - target: {fileID: 114093326654629570, guid: daa6f5a99ca46b44cb3fcc70c38f2547,
-        type: 2}
-      propertyPath: m_SerializedData.mesh
-      value: 
-      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa6f5a99ca46b44cb3fcc70c38f2547, type: 2}
   m_IsPrefabAsset: 0

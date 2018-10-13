@@ -25,7 +25,6 @@ namespace UnityEcsTest.Assets.Scripts.Network.Listeners.Players
                 typeof(NetworkEntity),
                 typeof(PlayerTag),
                 typeof(MoveSpeed),
-                typeof(Transform),
                 typeof(Position),
                 typeof(MeshInstanceRenderer)
             );
@@ -51,6 +50,7 @@ namespace UnityEcsTest.Assets.Scripts.Network.Listeners.Players
             float positionY = float.Parse(jsonObj["value"]["position"]["y"].ToString());
             float positionZ = float.Parse(jsonObj["value"]["position"]["z"].ToString());
             var playerEntity = _entityManager.CreateEntity(_archtypePlayer);
+            Debug.Log(playerEntity.Index);
             //_entityManager.SetComponentData(playerEntity, new NetworkEntity { Id = playerId });
             _entityManager.SetComponentData(playerEntity, new Position { Value = { x = positionX, y = positionY, z = positionZ} });
             _entityManager.SetComponentData(playerEntity, new MoveSpeed { Value = moveSpeed });

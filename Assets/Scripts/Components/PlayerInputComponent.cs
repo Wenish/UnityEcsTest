@@ -1,12 +1,12 @@
+using System;
 using Unity.Entities;
 
 namespace UnityEcsTest.Assets.Scripts.Components
 {
+    [Serializable]
     public struct PlayerInput : IComponentData
     {
         public float Horizontal;
     }
-
-    //If Component needs to be used on Prefabs
-    //public class PlayerInputComponent : ComponentDataWrapper<PlayerInput>{}
+    public class PlayerInputComponent : ComponentDataWrapper<PlayerInput>{}
 }

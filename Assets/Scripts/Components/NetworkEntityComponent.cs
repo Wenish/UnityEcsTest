@@ -1,5 +1,6 @@
 ﻿using System;
 using Unity.Entities;
+using UnityEngine;
 
 namespace UnityEcsTest.Assets.Scripts.Components
 {
@@ -7,4 +8,5 @@ namespace UnityEcsTest.Assets.Scripts.Components
     public struct NetworkEntity : IComponentData
     {
     }
+    public class NetworkEntityComponent : ComponentDataWrapper<NetworkEntity>{}
 }

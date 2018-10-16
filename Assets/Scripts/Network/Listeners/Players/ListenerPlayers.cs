@@ -43,32 +43,40 @@ namespace UnityEcsTest.Assets.Scripts.Network.Listeners.Players
             if (operation == "add")
             {
                 OperationAdd(jsonObj);
+            } else if(operation == "remove")
+            {
+                OperationRemove(jsonObj);
+            }
+            else if(operation == "replace")
+            {
+                OperationReplace(jsonObj);
             }
         }
         private void OperationAdd(JToken jsonObj)
         {
             Debug.Log(jsonObj);
-            string playerId = jsonObj["value"]["id"].ToString();
+            string playerId = jsonObj["path"]["id"].ToString();
             float moveSpeed = float.Parse(jsonObj["value"]["moveSpeed"].ToString());
             float positionX = float.Parse(jsonObj["value"]["position"]["x"].ToString());
             float positionY = float.Parse(jsonObj["value"]["position"]["y"].ToString());
             float positionZ = float.Parse(jsonObj["value"]["position"]["z"].ToString());
-            var playerEntity = _entityManager.CreateEntity(_archtypePlayer);
-            _players.Add(playerId, playerEntity);
-            Debug.Log(playerEntity.Index);
-            //_entityManager.SetComponentData(playerEntity, new NetworkEntity { Id = playerId });
-            _entityManager.SetComponentData(playerEntity, new Position { Value = { x = positionX, y = positionY, z = positionZ} });
-            _entityManager.SetComponentData(playerEntity, new MoveSpeed { Value = moveSpeed });
-            _entityManager.SetSharedComponentData(playerEntity, _playerLook);
-            Debug.Log(_players.Count);
+            var player = _entityManager.CreateEntity(_archtypePlayer);
+            _players.Add(playerId, player);
+            _entityManager.SetComponentData(player, new Position { Value = { x = positionX, y = positionY, z = positionZ} });
+            _entityManager.SetComponentData(player, new MoveSpeed { Value = moveSpeed });
+            _entityManager.SetSharedComponentData(player, _playerLook);
         }
-        private void OperationReplace()
+        private void OperationReplace(JToken jsonObj)
         {
-
+            Debug.Log("Player Replace");
+            Debug.Log(jsonObj);
         }
-        private void OperationRemove()
+        private void OperationRemove(JToken jsonObj)
         {
-
+            Debug.Log(jsonObj);
+            string playerId = jsonObj["path"]["id"].ToString();
+            var player = _players[playerId];
+            _entityManager.DestroyEntity(player);
         }
     }
 }

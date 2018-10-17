@@ -11,7 +11,7 @@ namespace UnityEcsTest.Assets.Scripts
         private ColyseusClient _colyseusClient;
 
         private Dictionary<string, Entity> _players = new Dictionary<string, Entity>();
-        
+
         public async void Start()
         {
             _colyseusClient = new ColyseusClient("localhost", "8080");

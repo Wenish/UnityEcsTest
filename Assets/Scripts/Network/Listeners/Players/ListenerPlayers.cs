@@ -29,6 +29,7 @@ namespace UnityEcsTest.Assets.Scripts.Network.Listeners.Players
                 typeof(NetworkEntity),
                 typeof(PlayerTag),
                 typeof(MoveSpeed),
+                typeof(Health),
                 typeof(Position),
                 typeof(MeshInstanceRenderer)
             );
@@ -43,11 +44,12 @@ namespace UnityEcsTest.Assets.Scripts.Network.Listeners.Players
             if (operation == "add")
             {
                 OperationAdd(jsonObj);
-            } else if(operation == "remove")
+            }
+            else if (operation == "remove")
             {
                 OperationRemove(jsonObj);
             }
-            else if(operation == "replace")
+            else if (operation == "replace")
             {
                 OperationReplace(jsonObj);
             }
@@ -57,13 +59,15 @@ namespace UnityEcsTest.Assets.Scripts.Network.Listeners.Players
             Debug.Log(jsonObj);
             string playerId = jsonObj["path"]["id"].ToString();
             float moveSpeed = float.Parse(jsonObj["value"]["moveSpeed"].ToString());
+            int health = int.Parse(jsonObj["value"]["health"].ToString());
             float positionX = float.Parse(jsonObj["value"]["position"]["x"].ToString());
             float positionY = float.Parse(jsonObj["value"]["position"]["y"].ToString());
             float positionZ = float.Parse(jsonObj["value"]["position"]["z"].ToString());
             var player = _entityManager.CreateEntity(_archtypePlayer);
             _players.Add(playerId, player);
-            _entityManager.SetComponentData(player, new Position { Value = { x = positionX, y = positionY, z = positionZ} });
+            _entityManager.SetComponentData(player, new Position { Value = { x = positionX, y = positionY, z = positionZ } });
             _entityManager.SetComponentData(player, new MoveSpeed { Value = moveSpeed });
+            _entityManager.SetComponentData(player, new Health { Value = health });
             _entityManager.SetSharedComponentData(player, _playerLook);
         }
         private void OperationReplace(JToken jsonObj)
